@@ -27,17 +27,20 @@ public class TimerCircle implements Runnable {
     stage = q;
   }
 
+/*三角形描画のプログラムを起動させる*/
   protected void init(Stage primaryStage, Pane pane) {
     startCircle();
     pane.getChildren().add(circle);
     pane.getChildren().add(text);
   }
 
+/*タイマーとランダムな座標の設置*/
   protected void startCircle() {
     int delay = 2000;
     timer = new Timer(delay, new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent e) {
         Platform.runLater(new Runnable() {
+          @Override
           public void run() {
             Random r = new Random();
             int x = r.nextInt(300) + 40;
@@ -50,6 +53,7 @@ public class TimerCircle implements Runnable {
     timer.start();
   }
 
+/*円形を描いて、マークする*/
   protected void resetCircle(int x, int y) {
     String j = String.valueOf(i);
     text.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.ITALIC, 30));

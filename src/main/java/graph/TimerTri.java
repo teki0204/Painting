@@ -23,6 +23,12 @@ public class TimerTri implements Runnable {
   Line line2 = new Line();
   Line line3 = new Line();
 
+  protected void Set(Stage q, Pane p) {
+    pane = p;
+    stage = q;
+  }
+
+/*三角形描画のプログラムを起動させる*/
   protected void init(Stage primaryStage, Pane pane) {
     startTime(primaryStage, pane);
     pane.getChildren().add(line1);
@@ -31,11 +37,13 @@ public class TimerTri implements Runnable {
     pane.getChildren().add(text);
   }
 
-  protected void startTime(final Stage primaryStage, final Pane pane) {
+/*タイマー*/
+  protected void startTime(Stage primaryStage, Pane pane) {
     int delay = 3000;
     timer = new Timer(delay, new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent e) {
         Platform.runLater(new Runnable() {
+          @Override
           public void run() {
             resetPolygon(primaryStage, pane);
           }
@@ -45,17 +53,14 @@ public class TimerTri implements Runnable {
     timer.start();
   }
 
-  protected void Set(Stage q, Pane p) {
-    pane = p;
-    stage = q;
-  }
-
+/*ランダムで三角の座標を設置する*/
   protected void resetPolygon(Stage primaryStage, Pane pane) {
     Random r = new Random();
     double x = r.nextInt(300) + 40, y = r.nextInt(300) + 40;
     Triangle(x, y, primaryStage, pane);
   }
 
+/*三角形を描いて、マークする*/
   protected void Triangle(double x2, double y2, Stage primaryStage, Pane pane2) {
     String j = String.valueOf(i);
     text.setFont(Font.font("Courier", FontPosture.ITALIC, 30));
@@ -80,6 +85,7 @@ public class TimerTri implements Runnable {
     line3.setStartY(y2 + 20);
     line3.setEndY(y2 - 80);
     line3.setStroke(Color.BLACK);
+
     i++;
   }
 
