@@ -9,7 +9,14 @@ public class MainTest extends Application {
   public static void main(String[] args) {
     Application.launch(args);
   }
-
+  
+  /**
+  * ä¸»ãƒ—ãƒ­ã‚°ãƒ©ãƒ 
+  * 
+  * é–¢æ•°ã®åˆæœŸåŒ–ã—ã¦ã€ä¸‰è§’å½¢ã¨å††å½¢ã®æç”»ã‚¯ãƒ©ã‚¹ã®å‘¼ã³å‡ºã—ã¦ã€ä¸»è¦æ©Ÿèƒ½ã‚’å®Ÿç¾ã™ã‚‹ã€‚
+  * 
+  * @param primaryStage Sceneã‚’è¡¨ç¤ºã™ã‚‹ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
+  */
   @Override
   public void start(Stage primaryStage) {
     Pane pane = new Pane();
@@ -17,19 +24,13 @@ public class MainTest extends Application {
     TimerTri triangle = new TimerTri();
     Thread c = new Thread(circle);
     Thread t = new Thread(triangle);
-
-/*Thread‚ÌƒvƒƒOƒ‰ƒ€‚ğ‹N“®‚³‚¹‚é*/
+    //Threadã®ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’å®Ÿè¡Œã•ã›ã‚‹ã€‚
     c.start();
     t.start();
-
-/*•\¦ƒGƒŠƒA‚ğİ’u‚·‚é*/
-    circle.Set(primaryStage, pane);
-    triangle.Set(primaryStage, pane);
-
-/*•`‰æ‚ÌƒvƒƒOƒ‰ƒ€‚ğ‹N“®‚³‚¹‚é*/
+    //æç”»ã®ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’å®Ÿè¡Œã•ã›ã‚‹ã€‚
     circle.init(primaryStage, pane);
     triangle.init(primaryStage, pane);
-
+    //çµæœç”»é¢ã‚’è¡¨ç¤ºã™ã‚‹ã€‚
     primaryStage.setScene(new Scene(pane, 400, 400));
     primaryStage.show();
   }

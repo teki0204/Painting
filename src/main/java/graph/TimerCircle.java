@@ -22,25 +22,26 @@ public class TimerCircle implements Runnable {
   Scene scene = new Scene(pane, 400, 400);
   Stage stage = new Stage();
 
-  protected void Set(Stage q, Pane p) {
-    pane = p;
-    stage = q;
-  }
-
-/*�O�p�`�`��̃v���O�������N��������*/
+  /**
+  * 円形描画のプログラムを実行させて，描いたマークと円形をpaneに保存する。
+  * 
+  * @param primaryStage paneを表示するウィンドウ
+  * @param pane マークと円形描画のコンテナ
+  */
   protected void init(Stage primaryStage, Pane pane) {
     startCircle();
     pane.getChildren().add(circle);
     pane.getChildren().add(text);
   }
-
-/*�^�C�}�[�ƃ����_���ȍ��W�̐ݒu*/
+  /**
+  * 二秒に一回で描画することを設置して、ランダムな座標を円の中心として生成する。
+  * 生成した座標値を圆形描画メソッドに入力する。
+  */
   protected void startCircle() {
     int delay = 2000;
     timer = new Timer(delay, new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent e) {
         Platform.runLater(new Runnable() {
-          @Override
           public void run() {
             Random r = new Random();
             int x = r.nextInt(300) + 40;
@@ -52,22 +53,30 @@ public class TimerCircle implements Runnable {
     });
     timer.start();
   }
-
-/*�~�`��`���āA�}�[�N����*/
+  /**
+  * グラフのプロパテを設定して、円形を描く。
+  * パラメタ「i」で円形の数量を記録して、数字マーク付ける。
+  * 
+  * @param x ランダムで生成した横座標
+  * @param y ランダムで生成した縦座標
+  */
   protected void resetCircle(int x, int y) {
+    //マーク
     String j = String.valueOf(i);
     text.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.ITALIC, 30));
     text.setX(x - 8);
     text.setY(y + 10);
     text.setText(j);
+    //円形を描く。
     circle.setCenterX(x);
     circle.setCenterY(y);
     circle.setRadius(40);
     circle.setStroke(Color.BLACK);
     circle.setFill(Color.WHITE);
+    //描いた円形の数量を記録する。
     i++;
   }
-
+  //Threadを実行する。
   public void run() {
     while (true) {
       try {

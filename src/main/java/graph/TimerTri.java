@@ -22,52 +22,59 @@ public class TimerTri implements Runnable {
   Line line1 = new Line();
   Line line2 = new Line();
   Line line3 = new Line();
-
-  protected void Set(Stage q, Pane p) {
-    pane = p;
-    stage = q;
-  }
-
-/*�O�p�`�`��̃v���O�������N��������*/
+  /**
+  * 三角形描画のプログラムを実行させて，描いたマークと三角形をpaneに保存する。
+  * 
+  * @param primaryStage paneを表示するウィンドウ
+  * @param pane マークと三角形描画のコンテナ
+  */
   protected void init(Stage primaryStage, Pane pane) {
-    startTime(primaryStage, pane);
+    startTri();
     pane.getChildren().add(line1);
     pane.getChildren().add(line2);
     pane.getChildren().add(line3);
     pane.getChildren().add(text);
   }
-
-/*�^�C�}�[*/
-  protected void startTime(Stage primaryStage, Pane pane) {
+  /**
+  * 三秒に一回で描画することを設置する。
+  */
+  protected void startTri() {
     int delay = 3000;
     timer = new Timer(delay, new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent e) {
         Platform.runLater(new Runnable() {
-          @Override
           public void run() {
-            resetPolygon(primaryStage, pane);
+            resetTri();
           }
         });
       }
     });
     timer.start();
   }
-
-/*�����_���ŎO�p�̍��W��ݒu����*/
-  protected void resetPolygon(Stage primaryStage, Pane pane) {
+  /**
+  * ランダムな座標を重心として生成して、三角形描画メソッドに入力する。
+  */
+  protected void resetTri() {
     Random r = new Random();
-    double x = r.nextInt(300) + 40, y = r.nextInt(300) + 40;
-    Triangle(x, y, primaryStage, pane);
+    int x = r.nextInt(300) + 40;
+    int y = r.nextInt(300) + 40;
+    Triangle(x, y);
   }
-
-/*�O�p�`��`���āA�}�[�N����*/
-  protected void Triangle(double x2, double y2, Stage primaryStage, Pane pane2) {
+  /**
+  * グラフのプロパテを設定して、三角形を描く。
+  * パラメタ「i」で三角形の数量を記録して、数字マーク付ける。
+  * 
+  * @param x2 ランダムで生成した重心の横座標
+  * @param y2 ランダムで生成した重心の縦座標
+  */
+  protected void Triangle(double x2, double y2) {
+    //マーク
     String j = String.valueOf(i);
     text.setFont(Font.font("Courier", FontPosture.ITALIC, 30));
     text.setX(x2 - 10);
     text.setY(y2);
     text.setText(j);
-
+    //重心を中心として三つの点を決めて、連結して、三角形が完成される。
     line1.setStartX(x2 - 40 * Math.sqrt(3.0));
     line1.setEndX(x2 + 40 * Math.sqrt(3.0));
     line1.setStartY(y2 + 20);
@@ -85,10 +92,10 @@ public class TimerTri implements Runnable {
     line3.setStartY(y2 + 20);
     line3.setEndY(y2 - 80);
     line3.setStroke(Color.BLACK);
-
+    //描いた三角形の数量を記録する。
     i++;
   }
-
+  //Threadを実行する。
   public void run() {
     while (true) {
       try {
