@@ -21,12 +21,10 @@ public class MainTest extends Application {
     Pane pane = new Pane();
     TimerCircle circle = new TimerCircle();
     TimerTri triangle = new TimerTri();
-    Thread c = new Thread(circle);
-    Thread t = new Thread(triangle);
 
     //Threadのプログラムを実行させる。
-    c.start();
-    t.start();
+    new Thread(circle).start();
+    new Thread(triangle).start();
 
     //描画のプログラムを実行させる。
     circle.init(primaryStage, pane);
