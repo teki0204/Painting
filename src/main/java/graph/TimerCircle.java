@@ -21,7 +21,7 @@ public class TimerCircle implements Runnable {
   Pane pane = new Pane();
   Scene scene = new Scene(pane, 400, 400);
   Stage stage = new Stage();
-
+  
   /**
   * 円形描画のプログラムを実行させて，描いたマークと円形をpaneに保存する。
   * 
@@ -33,6 +33,7 @@ public class TimerCircle implements Runnable {
     pane.getChildren().add(circle);
     pane.getChildren().add(text);
   }
+  
   /**
   * 二秒に一回で描画することを設置して、ランダムな座標を円の中心として生成する。
   * 生成した座標値を圆形描画メソッドに入力する。
@@ -53,6 +54,7 @@ public class TimerCircle implements Runnable {
     });
     timer.start();
   }
+  
   /**
   * グラフのプロパテを設定して、円形を描く。
   * パラメタ「i」で円形の数量を記録して、数字マーク付ける。

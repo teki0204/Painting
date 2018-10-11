@@ -22,6 +22,7 @@ public class TimerTri implements Runnable {
   Line line1 = new Line();
   Line line2 = new Line();
   Line line3 = new Line();
+  
   /**
   * 三角形描画のプログラムを実行させて，描いたマークと三角形をpaneに保存する。
   * 
@@ -35,6 +36,7 @@ public class TimerTri implements Runnable {
     pane.getChildren().add(line3);
     pane.getChildren().add(text);
   }
+  
   /**
   * 三秒に一回で描画することを設置する。
   */
@@ -51,6 +53,7 @@ public class TimerTri implements Runnable {
     });
     timer.start();
   }
+  
   /**
   * ランダムな座標を重心として生成して、三角形描画メソッドに入力する。
   */
@@ -60,6 +63,7 @@ public class TimerTri implements Runnable {
     int y = r.nextInt(300) + 40;
     Triangle(x, y);
   }
+  
   /**
   * グラフのプロパテを設定して、三角形を描く。
   * パラメタ「i」で三角形の数量を記録して、数字マーク付ける。
