@@ -1,4 +1,4 @@
-package graph;
+﻿package graph;
 
 import java.util.*;
 import javax.swing.Timer;
@@ -69,15 +69,18 @@ public class TimerCircle implements Runnable {
     text.setX(x - 8);
     text.setY(y + 10);
     text.setText(j);
+
     //円形を描く。
     circle.setCenterX(x);
     circle.setCenterY(y);
     circle.setRadius(40);
     circle.setStroke(Color.BLACK);
     circle.setFill(Color.WHITE);
+
     //描いた円形の数量を記録する。
     i++;
   }
+
   //Threadを実行する。
   public void run() {
     while (true) {

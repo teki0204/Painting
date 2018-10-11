@@ -1,4 +1,4 @@
-package graph;
+﻿package graph;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -24,12 +24,15 @@ public class MainTest extends Application {
     TimerTri triangle = new TimerTri();
     Thread c = new Thread(circle);
     Thread t = new Thread(triangle);
+
     //Threadのプログラムを実行させる。
     c.start();
     t.start();
+
     //描画のプログラムを実行させる。
     circle.init(primaryStage, pane);
     triangle.init(primaryStage, pane);
+
     //結果画面を表示する。
     primaryStage.setScene(new Scene(pane, 400, 400));
     primaryStage.show();

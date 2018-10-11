@@ -1,4 +1,4 @@
-package graph;
+﻿package graph;
 
 import javax.swing.Timer;
 import javafx.application.Platform;
@@ -78,6 +78,7 @@ public class TimerTri implements Runnable {
     text.setX(x2 - 10);
     text.setY(y2);
     text.setText(j);
+
     //重心を中心として三つの点を決めて、連結して、三角形が完成される。
     line1.setStartX(x2 - 40 * Math.sqrt(3.0));
     line1.setEndX(x2 + 40 * Math.sqrt(3.0));
@@ -96,9 +97,11 @@ public class TimerTri implements Runnable {
     line3.setStartY(y2 + 20);
     line3.setEndY(y2 - 80);
     line3.setStroke(Color.BLACK);
+
     //描いた三角形の数量を記録する。
     i++;
   }
+
   //Threadを実行する。
   public void run() {
     while (true) {
