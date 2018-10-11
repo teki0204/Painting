@@ -12,7 +12,6 @@ public class MainTest extends Application {
   
   /**
   * 主プログラム
-  * 
   * 関数の初期化して、三角形と円形の描画クラスの呼び出して、主要機能を実現する。
   * 
   * @param primaryStage Sceneを表示するウィンドウ
